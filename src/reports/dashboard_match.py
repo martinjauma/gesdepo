@@ -95,8 +95,34 @@ def main():
             total_score_local = df_filtrado['SCORE LOCAL'].sum()
             total_score_visita = df_filtrado['SCORE VISITA'].sum()
 
+            # Definir el CSS con estilo para la alineación de imágenes y texto
+            css_code = """
+            <style>
+            .image-container {
+                position: relative;
+                height: 200px; /* Ajusta la altura según tu necesidad */
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: flex-end;
+            }
+            .image-container img {
+                width: 150px; /* Ajusta el tamaño de la imagen según tu necesidad */
+            }
+            .image-container p {
+                font-size: 24px; /* Ajusta el tamaño de la fuente según tu necesidad */
+                margin: 0;
+                text-align: center;
+                width: 100%;
+            }
+            </style>
+            """
+
             # Crear interfaz en Streamlit
             st.title('SCORE')
+
+            # Mostrar el CSS en la aplicación
+            st.markdown(css_code, unsafe_allow_html=True)
 
             # Crear columnas para los logos
             col1, col2, col3 = st.columns([1, 0.1, 1])
@@ -104,18 +130,16 @@ def main():
             # Mostrar el logo local
             with col1:
                 st.markdown(f"""
-                    <div style='text-align: center;'>
-                        <img src='https://storage.googleapis.com/slar2024/TEROS/TEAMS_strea/{df_filtrado["LOCAL"].iloc[0]}.png' width='150' />
-                        <p>{df_filtrado["LOCAL"].iloc[0]}</p>
+                    <div class="image-container">
+                        <img src='https://storage.googleapis.com/slar2024/TEROS/TEAMS_strea/{df_filtrado["LOCAL"].iloc[0]}.png' />
                     </div>
                     """, unsafe_allow_html=True)
 
             # Mostrar el logo visitante
             with col3:
                 st.markdown(f"""
-                    <div style='text-align: center;'>
-                        <img src='https://storage.googleapis.com/slar2024/TEROS/TEAMS_strea/{df_filtrado["VISITA"].iloc[0]}.png' width='150' />
-                        <p>{df_filtrado["VISITA"].iloc[0]}</p>
+                    <div class="image-container">
+                        <img src='https://storage.googleapis.com/slar2024/TEROS/TEAMS_strea/{df_filtrado["VISITA"].iloc[0]}.png' />
                     </div>
                     """, unsafe_allow_html=True)
 
@@ -126,7 +150,7 @@ def main():
             with col1:
                 st.markdown(f"""
                     <div style='text-align: center;'>
-                        <h2>Score Local</h2>
+                        <h2>{df_filtrado["LOCAL"].iloc[0]}</h2>
                         <h1>{total_score_local}</h1>
                     </div>
                     """, unsafe_allow_html=True)
@@ -135,7 +159,7 @@ def main():
             with col3:
                 st.markdown(f"""
                     <div style='text-align: center;'>
-                        <h2>Score Visita</h2>
+                        <h2>{df_filtrado["VISITA"].iloc[0]}</h2>
                         <h1>{total_score_visita}</h1>
                     </div>
                     """, unsafe_allow_html=True)
