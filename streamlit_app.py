@@ -6,6 +6,8 @@ from app.reports.reports_page import reports_page
 from app.settings import settings_page
 from app.form import form_page
 
+
+#comentar al
 def main():
     st.set_page_config(page_title="GesDepo App", layout="wide")
 
