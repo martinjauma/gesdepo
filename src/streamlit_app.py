@@ -5,20 +5,22 @@ from streamlit_option_menu import option_menu
 def login():
     if st.button("Log in"):
         st.session_state.logged_in = True
+        st.experimental_rerun()
 
 def logout():
     if st.button("Log out"):
         st.session_state.logged_in = False
+        st.experimental_rerun()
 
+# Configuración inicial de sesión
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
 
 # Sidebar Navigation
 with st.sidebar:
     st.sidebar.title("Navegación")
-    
+
     if st.session_state.logged_in:
-        # Menú con íconos
         selected = option_menu(
             menu_title=None,  # Deja el título vacío
             options=["Dashboard Data Base", "Dashboard Match", "Dashboard Individual", "Formulario", "Logout"],
@@ -27,21 +29,27 @@ with st.sidebar:
             default_index=0,  # Índice de la opción seleccionada por defecto
             orientation="vertical",  # Mantén el menú en orientación vertical
         )
-
-        if selected == "Dashboard Data Base":
-            import reports.dashboard_Data_Base as db
-            db.main()  # Ejecuta la función main() del dashboard
-        elif selected == "Dashboard Match":
-            import reports.dashboard_match as dm
-            dm.main()
-        elif selected == "Dashboard Individual":
-            import reports.dashboard_ind as di
-            di.main()
-        elif selected == "Formulario":
-            import forms.form as form
-            form.main()
-        elif selected == "Logout":
-            logout()
     else:
         st.sidebar.write("Por favor, inicia sesión")
         login()
+
+# Mostrar el contenido en la página principal basado en la selección del menú
+if st.session_state.logged_in:
+    if selected == "Dashboard Data Base":
+        import reports.dashboard_Data_Base as db
+        st.write("# Dashboard Data Base")
+        db.main()  # Ejecuta la función main() del dashboard
+    elif selected == "Dashboard Match":
+        import reports.dashboard_match as dm
+        st.write("# Dashboard Match")
+        dm.main()
+    elif selected == "Dashboard Individual":
+        import reports.dashboard_ind as di
+        st.write("# Dashboard Individual")
+        di.main()
+    elif selected == "Formulario":
+        import forms.form as form
+        st.write("# Formulario")
+        form.main()
+    elif selected == "Logout":
+        logout()
