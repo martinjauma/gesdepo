@@ -1,9 +1,5 @@
 import streamlit as st
 
-# Manejo de estado de sesión para el inicio de sesión
-if "logged_in" not in st.session_state:
-    st.session_state.logged_in = False
-
 def login():
     if st.button("Log in"):
         st.session_state.logged_in = True
@@ -14,37 +10,29 @@ def logout():
         st.session_state.logged_in = False
         st.experimental_rerun()
 
-# Definir las páginas y sus rutas
-def main():
-    if st.session_state.logged_in:
-        # Configurar la navegación
-        pages = {
-            "Account": [login_page, logout_page],
-            "Reports": [dashboard_base_data, dashboard_match, dashboard_ind],
-            "Form": [form]
-        }
-    else:
-        pages = [login_page]
+if "logged_in" not in st.session_state:
+    st.session_state.logged_in = False
 
-    pg = st.sidebar.radio("Menu", list(pages.keys()), index=0)
+# Sidebar Navigation
+st.sidebar.title("Navegación")
 
-    if pg == "Account":
-        st.sidebar.selectbox("Account Options", options=[login_page, logout_page])
-    elif pg == "Reports":
-        page = st.sidebar.selectbox("Reports", options=[dashboard_base_data, dashboard_match, dashboard_ind])
-        st.experimental_rerun()
-    elif pg == "Form":
-        page = st.sidebar.selectbox("Form", options=[form])
-        st.experimental_rerun()
+if st.session_state.logged_in:
+    page = st.sidebar.radio("Selecciona una opción", ["Dashboard Data Base", "Dashboard Match", "Dashboard Individual", "Formulario", "Logout"])
 
-# Crear las páginas
-login_page = st.pages.Page(login, title="Log in", icon=":material/login:")
-logout_page = st.pages.Page(logout, title="Log out", icon=":material/logout:")
-dashboard_base_data = st.pages.Page("reports/dashboard_Data_Base.py", title="Dashboard Data Base", icon=":material/dashboard:", default=True)
-dashboard_match = st.pages.Page("reports/dashboard_match.py", title="Dashboard Match", icon=":material/dashboard:", default=False)
-dashboard_ind = st.pages.Page("reports/dashboard_ind.py", title="Dashboard Individual", icon=":material/dashboard:", default=False)
-form = st.pages.Page("forms/1_Form.py", title="Formularios", icon=":material/bug_report:")
-
-# Ejecutar la función principal
-if __name__ == "__main__":
-    main()
+    if page == "Dashboard Data Base":
+        import reports.dashboard_Data_Base as db
+        db.main()
+    elif page == "Dashboard Match":
+        import reports.dashboard_match as dm
+        dm.main()
+    elif page == "Dashboard Individual":
+        import reports.dashboard_ind as di
+        di.main()
+    elif page == "Formulario":
+        import forms.form as form
+        form.main()
+    elif page == "Logout":
+        logout()
+else:
+    st.sidebar.write("Por favor, inicia sesión")
+    login()
