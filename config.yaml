@@ -1,0 +1,42 @@
+# config.yaml
+
+# Configuración de la página de la aplicación
+page_config:
+  page_title: "GDURU App"
+  layout: "wide"
+  
+# Parámetros adicionales (ejemplo)
+database:
+  host: "localhost"
+  port: 27017
+  username: "tu_usuario"
+  password: "tu_contraseña"
+  database_name: "nombre_de_base_de_datos"
+
+api:
+  endpoint: "https://api.example.com/data"
+  key: "tu_api_key"
+
+
+
+# config.yaml
+
+credentials:
+  usernames:
+    user1:
+      email: "martin.jauma@gmail.com"
+      name: "Martin"
+      password: "Piston"
+    user2:
+      email: "user2@example.com"
+      name: "User Two"
+      password: "password2"
+
+cookie:
+  key: "some_random_key"
+  expiry_days: 30
+
+preauthorized:
+  emails:
+    - "user1@example.com"
+    - "user2@example.com"
