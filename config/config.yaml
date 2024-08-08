@@ -1,0 +1,3 @@
+mongodb:
+  uri: "mongodb+srv://martinjauma:Piston@clustergd.qny9kpp.mongodb.net/"
+  database: "gestDep_db_json"
