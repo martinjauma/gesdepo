@@ -68,6 +68,7 @@ def main():
                 try:
                     result = collection.insert_one(nuevo_registro)
                     st.success(f"Formulario enviado con éxito. ID del registro: {result.inserted_id}")
+                    st.write("---")
                     st.subheader("Nuevo Registro Agregado")
                     st.dataframe(pd.DataFrame([nuevo_registro]))
                     st.subheader("Todos los Registros en la Base de Datos")
@@ -119,5 +120,4 @@ def main():
             else:
                 st.warning("No se encontraron registros con ese apellido.")
 
-    st.subheader("Todos los Registros en la Base de Datos")
-    st.dataframe(pd.DataFrame(cargar_todos_los_datos()))
+    
