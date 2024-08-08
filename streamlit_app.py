@@ -1,17 +1,18 @@
 import streamlit as st
+from components.navbar import render_navbar
+from components.sidebar import render_sidebar
 from app.main import main_page
-from app.reports import reports_page
+from app.reports.reports_page import reports_page
 from app.settings import settings_page
 from app.form import form_page
 
 def main():
-    # Configura la página en Streamlit
-    st.set_page_config(page_title="GDURU App", layout="wide")
+    st.set_page_config(page_title="GesDepo App", layout="wide")
 
-    # Configura la barra lateral para navegación
-    selection = st.sidebar.selectbox("Navegación", ["Inicio", "Reportes", "Configuración", "Formulario"])
+    render_navbar()  # Renderiza la barra de navegación si tienes una
 
-    # Muestra el contenido basado en la selección
+    selection = render_sidebar()  # Renderiza la barra lateral y selecciona la página
+
     if selection == "Inicio":
         main_page()
     elif selection == "Reportes":
@@ -23,5 +24,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
