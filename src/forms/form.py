@@ -46,7 +46,7 @@ def cargar_todos_los_datos():
     return list(collection.find())
 
 def main():
-    st.logo("img/uruLogo.png")
+    # st.logo("img/uruLogo.png")
     st.title("Sistema de Gestión de Registros")
 
     opcion = st.selectbox("Selecciona una opción:", ["ALTA", "EDICIÓN", "ELIMINAR"])
