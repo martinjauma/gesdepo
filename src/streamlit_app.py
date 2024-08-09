@@ -5,12 +5,12 @@ from streamlit_option_menu import option_menu
 def login():
     if st.button("Log in"):
         st.session_state.logged_in = True
-        st.experimental_rerun()
+        st.stop
 
 def logout():
     if st.button("Log out"):
         st.session_state.logged_in = False
-        st.experimental_rerun()
+        st.stop
 
 # Configuración inicial de sesión
 if "logged_in" not in st.session_state:
