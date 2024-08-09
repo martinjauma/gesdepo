@@ -16,5 +16,5 @@ db = client[db_name]
 collection_name = os.getenv("MONGO_COLLECTION_MATCH", "match_URU")
 collection = db[collection_name]
 
-def get_db_m():
+def get_db():
     return db

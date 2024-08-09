@@ -3,14 +3,14 @@
 import pandas as pd
 import re
 import streamlit as st
-from srv.db.db import get_db_m
+from srv.db.db import get_db
 from PIL import Image
 import requests
 from io import BytesIO
 
 # Define la función main
 def main():
-    db = get_db_m()
+    db = get_db()
     collection = db["match_URU"]
 
     @st.cache_data
