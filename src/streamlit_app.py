@@ -1,6 +1,21 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
 
+#-----------------------------------------------------------------
+st.set_page_config(
+    page_title="GetDeportiva",
+    page_icon="🚀",
+    layout="wide",#"centered" or "wide"
+    initial_sidebar_state="auto",#"auto" or "expanded" or "collapsed"
+    
+    menu_items={
+        'Get Help': 'https://martinjauma.github.io/web/',
+        'Report a bug': "https://martinjauma.github.io/web/",
+        'About': " https://martinjauma.github.io/web/"
+    }
+)
+#-------------------------------------------------------------------------------------
+
 # Funciones de autenticación
 def login():
     if st.button("Log in"):
@@ -18,6 +33,7 @@ if "logged_in" not in st.session_state:
 
 # Sidebar Navigation
 with st.sidebar:
+    st.image("app/assets/img/uruLogo.png", caption="TEROS", width=100)
     st.sidebar.title("Navegación")
 
     if st.session_state.logged_in:
