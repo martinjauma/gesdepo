@@ -53,7 +53,6 @@ with st.sidebar:
 if st.session_state.logged_in:
     if selected == "Dashboard Data Base":
         import reports.dashboard_Data_Base as db
-        st.write("# Dashboard Data Base")
         db.main()  # Ejecuta la función main() del dashboard
     elif selected == "Dashboard Match":
         import reports.dashboard_match as dm
