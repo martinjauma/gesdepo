@@ -7,6 +7,8 @@ from srv.db.db import get_db
 from PIL import Image
 import requests
 from io import BytesIO
+import pdfkit
+
 
 # Define la función main
 def main():
