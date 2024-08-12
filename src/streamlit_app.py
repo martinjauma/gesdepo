@@ -39,8 +39,8 @@ with st.sidebar:
     if st.session_state.logged_in:
         selected = option_menu(
             menu_title=None,  # Deja el título vacío
-            options=["Dashboard Data Base", "Dashboard Match", "Dashboard Individual", "Formulario", "PDF", "Logout"],
-            icons=["bar-chart", "calendar-event", "person", "file-text", "file-earmark-pdf", "box-arrow-right"],  # Lista de íconos
+            options=["Dashboard Data Base", "Dashboard Match", "Dashboard Individual", "Formulario", "Logout"],
+            icons=["bar-chart", "calendar-event", "person", "file-text", "box-arrow-right"],  # Lista de íconos
             menu_icon="cast",  # Ícono del menú
             default_index=0,  # Índice de la opción seleccionada por defecto
             orientation="vertical",  # Mantén el menú en orientación vertical
@@ -66,9 +66,5 @@ if st.session_state.logged_in:
         import forms.form as form
         st.write("# Formulario")
         form.main()
-    elif selected == "PDF":
-        import reports.pdf_download as pdf
-        st.write("# Descargar Reportes en PDF")
-        pdf.main()
     elif selected == "Logout":
         logout()
