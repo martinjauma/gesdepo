@@ -1,5 +1,5 @@
 matplotlib==3.9.1.post1
-numpy==2.0.1
+numpy==1.23.5
 packaging==24.1
 pandas==1.5.3
 pillow==10.4.0
