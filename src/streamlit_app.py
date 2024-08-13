@@ -6,7 +6,7 @@ st.set_page_config(
     page_title="GetDeportiva",
     page_icon="🚀",
     layout="wide",#"centered" or "wide"
-    initial_sidebar_state="auto",#"auto" or "expanded" or "collapsed"
+    initial_sidebar_state="expanded",#"auto" or "expanded" or "collapsed"
     
     menu_items={
         'Get Help': 'https://martinjauma.github.io/web/',
